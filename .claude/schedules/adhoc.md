@@ -14,7 +14,7 @@
 - enabled: false
 - description: （タスクの説明をここに書く）
 - condition: always
-- agent: （担当エージェント名）
+<!-- - agent: （オプション。マルチエージェント構成の場合に担当エージェント名を指定） -->
 
 ### 実行内容
 

@@ -80,14 +80,14 @@ Claude Code の [Scheduled Triggers](https://claude.ai/code/scheduled) ページ
 
 | トリガー名 | スケジュール | プロンプト |
 |-----------|-------------|-----------|
-| Daily Dispatcher | 毎日 06:00 UTC | `cd claude-code-task-scheduler && .claude/schedules/daily.md を読み、enabled: true のタスクを上から順に実行してください。` |
-| Hourly Dispatcher | 毎時 | `cd claude-code-task-scheduler && .claude/schedules/hourly.md を読み、enabled: true のタスクを上から順に実行してください（JST 現在時刻を確認し hours フィールドの範囲外であればスキップ）。` |
-| Adhoc Dispatcher | 手動 | `cd claude-code-task-scheduler && .claude/schedules/adhoc.md を読み、enabled: true のタスクを実行し、実行後に enabled を false に戻してコミットしてください。` |
+| Daily Dispatcher | 毎日 06:00 UTC | `cd <your-repo-name> && .claude/schedules/daily.md を読み、enabled: true のタスクを上から順に実行してください。` |
+| Hourly Dispatcher | 毎時 | `cd <your-repo-name> && .claude/schedules/hourly.md を読み、enabled: true のタスクを上から順に実行してください（現在時刻を確認し hours フィールドの範囲外であればスキップ）。` |
+| Adhoc Dispatcher | 手動 | `cd <your-repo-name> && .claude/schedules/adhoc.md を読み、enabled: true のタスクを実行し、実行後に enabled を false に戻してコミットしてください。` |
 
 > **⚠️ 注意**
 >
-> - **`cd` は必須です。** Remote Triggers の実行環境はリポジトリルートが作業ディレクトリとは限りません。`cd` を省略するとスケジュールファイルが見つからず、エラーも出ずにサイレントに失敗します。
-> - **日付は UTC ではなくローカルタイムゾーンを使ってください。** タスク定義内で日付を扱う場合、`date -u`（UTC）を使うと早朝実行時に1日ズレます。`TZ=Asia/Tokyo date +%Y-%m-%d` のようにローカル TZ を明示してください。
+> - **`cd` は必須です。** `<your-repo-name>` はテンプレートから作成した自分のリポジトリ名に置き換えてください。Remote Triggers の実行環境はリポジトリルートが作業ディレクトリとは限りません。`cd` を省略するとスケジュールファイルが見つからず、エラーも出ずにサイレントに失敗します。
+> - **日付は UTC ではなくローカルタイムゾーンを使ってください。** タスク定義内で日付を扱う場合、`date -u`（UTC）を使うと早朝実行時に1日ズレます。`TZ=Your/Timezone date +%Y-%m-%d` のように自分のタイムゾーンを明示してください（例: `Asia/Tokyo`, `America/New_York`）。
 
 ### Step 4: 手動テストで動作確認
 
